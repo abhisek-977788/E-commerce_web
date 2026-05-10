@@ -19,18 +19,23 @@ Wistoria is a full-stack e-commerce platform with a Vite React frontend and an E
 
 1. Import the GitHub repository into Vercel.
 2. Set the Vercel project name to `wistoria`.
-3. Set the project root directory to `client`.
-4. Use these build settings:
+3. The repository root is supported by `vercel.json`. You may also set the project root directory to `client` and use `client/vercel.json`.
+4. If using the repository root, use these build settings:
+   - Framework preset: `Vite`
+   - Install command: `npm ci --prefix client`
+   - Build command: `npm run build --prefix client`
+   - Output directory: `client/dist`
+5. If using `client` as the root directory, use these build settings:
    - Framework preset: `Vite`
    - Install command: `npm ci`
    - Build command: `npm run build`
    - Output directory: `dist`
-5. Add production environment variables:
+6. Add production environment variables:
    - `VITE_API_URL=https://wistoria-api.onrender.com/api`
    - `VITE_API_BASE_URL=https://wistoria-api.onrender.com/api`
    - `VITE_RAZORPAY_KEY_ID=<your Razorpay key id>`
-6. Enable GitHub auto-deploys for the `main` branch.
-7. Assign the production domain `wistoria.vercel.app`.
+7. Enable GitHub auto-deploys for the `main` branch.
+8. Assign an available production domain.
 
 The SPA fallback is configured in `client/vercel.json` so direct route visits work in production.
 
