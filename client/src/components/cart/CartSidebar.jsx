@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
-import { toggleCart, closeCart } from '../../store/slices/uiSlice';
+import { closeCart } from '../../store/slices/uiSlice';
 import { updateCartItem, removeFromCart } from '../../store/slices/cartSlice';
 
 const CartSidebar = () => {

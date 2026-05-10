@@ -34,7 +34,7 @@ const Register = () => {
         password: formData.password
       })).unwrap();
       navigate('/');
-    } catch (error) {
+    } catch {
       // Error handled by Redux thunk
     }
   };

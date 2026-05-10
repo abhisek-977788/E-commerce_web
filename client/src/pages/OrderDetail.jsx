@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrderById, cancelOrder } from '../store/slices/orderSlice';
 import {
-  Package, Truck, CheckCircle, XCircle, Clock, ArrowLeft,
+  Truck, CheckCircle, ArrowLeft,
   MapPin, CreditCard, ShoppingBag, IndianRupee,
 } from 'lucide-react';
 

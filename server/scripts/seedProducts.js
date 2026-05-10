@@ -4,7 +4,12 @@ const axios = require('axios');
 const Product = require('../models/Product');
 
 const connectDB = async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
+  const mongoUri = process.env.MONGODB_URI || process.env.DATABASE_URL;
+  if (!mongoUri) {
+    throw new Error('MONGODB_URI or DATABASE_URL is required');
+  }
+
+  await mongoose.connect(mongoUri);
   console.log('✅ MongoDB connected for seeding');
 };
 

@@ -2,8 +2,14 @@ import axios from 'axios';
 import store from '../store/store';
 import { logout } from '../store/slices/authSlice';
 
+const apiBaseUrl = (
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD ? 'https://wistoria-api.onrender.com/api' : 'http://localhost:5000/api')
+).replace(/\/$/, '');
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: apiBaseUrl,
   headers: {
     'Content-Type': 'application/json',
   },

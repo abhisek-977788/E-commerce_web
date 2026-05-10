@@ -91,7 +91,7 @@ const Checkout = () => {
 
               navigate('/orders');
             }
-          } catch (err) {
+          } catch {
             toast.error('Payment verification failed');
             setLoading(false);
           }
@@ -113,7 +113,7 @@ const Checkout = () => {
       });
       rzp.open();
 
-    } catch (err) {
+    } catch {
       toast.error('Could not initiate payment');
       setLoading(false);
     }

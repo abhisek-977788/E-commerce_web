@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
-import { Search, Filter, Shield, User, Trash2 } from 'lucide-react';
+import { Search, Filter, Trash2 } from 'lucide-react';
 import AdminSidebar from '../../components/layout/AdminSidebar';
 
 const AdminUsers = () => {
@@ -14,7 +14,7 @@ const AdminUsers = () => {
       const { data } = await api.get('/users');
       setUsers(data.data);
       setLoading(false);
-    } catch (err) {
+    } catch {
       toast.error('Failed to fetch users');
       setLoading(false);
     }
@@ -29,7 +29,7 @@ const AdminUsers = () => {
       await api.put(`/users/${userId}/role`, { role: newRole });
       toast.success('User role updated');
       fetchUsers();
-    } catch (err) {
+    } catch {
       toast.error('Failed to update role');
     }
   };
@@ -40,7 +40,7 @@ const AdminUsers = () => {
         await api.delete(`/users/${userId}`);
         toast.success('User deleted successfully');
         fetchUsers();
-      } catch (err) {
+      } catch {
         toast.error('Failed to delete user');
       }
     }

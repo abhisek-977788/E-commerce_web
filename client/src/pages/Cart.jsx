@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCartItem, removeFromCart, applyCoupon, removeCoupon } from '../store/slices/cartSlice';
-import { Trash2, Minus, Plus, ArrowRight, ShoppingBag, Tag, ArrowLeft } from 'lucide-react';
+import { Trash2, Minus, Plus, ArrowRight, ShoppingBag, Tag, ArrowLeft, X } from 'lucide-react';
 
 const Cart = () => {
   const dispatch = useDispatch();

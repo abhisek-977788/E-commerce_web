@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../store/slices/productSlice';
 import api from '../../utils/api';
@@ -168,9 +168,9 @@ const AdminProducts = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
 
-  const reload = () => dispatch(fetchProducts({ limit: 100 }));
+  const reload = useCallback(() => dispatch(fetchProducts({ limit: 100 })), [dispatch]);
 
-  useEffect(() => { reload(); }, []);
+  useEffect(() => { reload(); }, [reload]);
 
   const openCreate = () => { setEditProduct(null); setModalOpen(true); };
   const openEdit   = (product) => { setEditProduct(product); setModalOpen(true); };

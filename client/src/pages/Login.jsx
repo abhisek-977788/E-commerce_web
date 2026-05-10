@@ -23,7 +23,7 @@ const Login = () => {
     try {
       await dispatch(loginUser(formData)).unwrap();
       navigate('/');
-    } catch (error) {
+    } catch {
       // Error handled by Redux thunk (toast)
     }
   };
