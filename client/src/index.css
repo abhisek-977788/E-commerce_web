@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 99 102 241;
+    --accent: 245 158 11;
+  }
+
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-900 text-white font-sans;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-white;
+  }
+}
+
+@layer components {
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .glass-dark {
+    @apply bg-dark-900/80 backdrop-blur-xl border border-white/5;
+  }
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent-500 bg-clip-text text-transparent;
+  }
+  .gradient-text-cool {
+    @apply bg-gradient-to-r from-primary-300 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-xl transition-all duration-200 
+           active:scale-95 shadow-glow hover:shadow-glow-lg disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all duration-200 
+           border border-white/20 active:scale-95;
+  }
+  .btn-accent {
+    @apply px-6 py-3 bg-accent-500 hover:bg-accent-600 text-dark-900 font-bold rounded-xl transition-all duration-200 
+           active:scale-95 shadow-lg;
+  }
+  .btn-danger {
+    @apply px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg transition-all duration-200 active:scale-95;
+  }
+  .btn-ghost {
+    @apply px-4 py-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200;
+  }
+  .btn-icon {
+    @apply p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-95;
+  }
+
+  /* Input */
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 
+           focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500/50 transition-all duration-200;
+  }
+
+  /* Cards */
+  .product-card {
+    @apply glass-card overflow-hidden cursor-pointer relative;
+  }
+  .stat-card {
+    @apply glass rounded-2xl p-6 relative overflow-hidden;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-primary { @apply badge bg-primary-500/20 text-primary-300 border border-primary-500/30; }
+  .badge-success { @apply badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30; }
+  .badge-warning { @apply badge bg-amber-500/20 text-amber-300 border border-amber-500/30; }
+  .badge-danger  { @apply badge bg-red-500/20 text-red-300 border border-red-500/30; }
+  .badge-info    { @apply badge bg-blue-500/20 text-blue-300 border border-blue-500/30; }
+
+  /* Section heading */
+  .section-title {
+    @apply text-2xl md:text-3xl font-display font-bold text-white;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-white/5 rounded-lg animate-pulse;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Price display */
+  .price-current {
+    @apply text-xl font-bold text-white;
+  }
+  .price-original {
+    @apply text-sm text-gray-500 line-through;
+  }
+  .price-discount {
+    @apply text-sm font-semibold text-emerald-400;
+  }
+
+  /* Star rating */
+  .stars {
+    @apply flex items-center gap-0.5;
+  }
+
+  /* Order status */
+  .status-pending   { @apply badge-warning; }
+  .status-confirmed { @apply badge-info; }
+  .status-shipped   { @apply badge-primary; }
+  .status-delivered { @apply badge-success; }
+  .status-cancelled { @apply badge-danger; }
+
+  /* Page container */
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Hero gradient overlay */
+  .hero-overlay {
+    background: linear-gradient(to right, rgba(15,23,42,0.95) 40%, rgba(15,23,42,0.6) 70%, rgba(15,23,42,0.2) 100%);
+  }
+
+  /* Neon glow border */
+  .glow-border {
+    @apply border border-primary-500/50 shadow-[0_0_15px_rgba(99,102,241,0.2)];
+  }
+
+  /* Cart sidebar */
+  .cart-item {
+    @apply flex items-center gap-3 p-3 glass rounded-xl;
+  }
+  
+  /* Nav link */
+  .nav-link {
+    @apply text-gray-300 hover:text-white transition-colors duration-200 font-medium text-sm;
+  }
+  .nav-link-active {
+    @apply text-primary-400 font-semibold;
+  }
+
+  /* Admin sidebar */
+  .admin-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 
+           transition-all duration-200 font-medium cursor-pointer;
+  }
+  .admin-nav-item-active {
+    @apply admin-nav-item bg-primary-600/20 text-primary-300 border border-primary-500/20;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  .bg-mesh {
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(245, 158, 11, 0.07) 0px, transparent 50%);
+  }
+}
