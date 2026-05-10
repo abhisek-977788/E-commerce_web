@@ -40,13 +40,12 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-productSchema.pre('save', function (next) {
+productSchema.pre('save', function () {
   if (this.discountPercentage > 0) {
     this.discountedPrice = Math.round(this.price * (1 - this.discountPercentage / 100));
   } else {
     this.discountedPrice = this.price;
   }
-  next();
 });
 
 productSchema.index({ title: 'text', description: 'text', category: 'text', tags: 'text' });

@@ -53,7 +53,7 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-orderSchema.pre('save', function (next) {
+orderSchema.pre('save', function () {
   if (this.isNew) {
     this.orderNumber = 'ORD-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
     this.statusHistory = [{ status: this.orderStatus, timestamp: new Date() }];
@@ -61,7 +61,6 @@ orderSchema.pre('save', function (next) {
     deliveryDate.setDate(deliveryDate.getDate() + 5);
     this.estimatedDelivery = deliveryDate;
   }
-  next();
 });
 
 module.exports = mongoose.model('Order', orderSchema);
