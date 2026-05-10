@@ -18,6 +18,10 @@ const createOrder = async (req, res, next) => {
     let subtotal = 0;
     for (const item of cart.items) {
       if (!item.product) continue;
+      if (item.product.stock < item.quantity) {
+        return res.status(400).json({ success: false, message: `${item.product.title} does not have enough stock` });
+      }
+
       const itemTotal = item.product.discountedPrice * item.quantity;
       items.push({
         product: item.product._id,
@@ -28,8 +32,10 @@ const createOrder = async (req, res, next) => {
         total: itemTotal,
       });
       subtotal += itemTotal;
-      // Reduce stock
-      await Product.findByIdAndUpdate(item.product._id, { $inc: { stock: -item.quantity } });
+    }
+
+    if (!items.length) {
+      return res.status(400).json({ success: false, message: 'Cart has no valid products' });
     }
 
     const shippingCost = subtotal > 499 ? 0 : 49;
@@ -52,6 +58,11 @@ const createOrder = async (req, res, next) => {
       orderStatus: 'pending',
       couponCode,
     });
+
+    // Reduce stock only after the order is successfully created.
+    for (const item of items) {
+      await Product.findByIdAndUpdate(item.product, { $inc: { stock: -item.quantity } });
+    }
 
     // Clear cart
     await Cart.findOneAndUpdate({ user: req.user._id }, { items: [], couponCode: null, couponDiscount: 0 });
