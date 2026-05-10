@@ -5,6 +5,7 @@ Wistoria is a full-stack e-commerce platform with a Vite React frontend and an E
 ## Production URLs
 
 - Frontend: `https://wistoria-abhisek-patels-projects.vercel.app`
+- Smartphone showcase: `https://wistoria-abhisek-patels-projects.vercel.app/products?category=smartphones`
 - Backend API: `https://wistoria-qq9f.onrender.com`
 - API health check: `https://wistoria-qq9f.onrender.com/api/health`
 
