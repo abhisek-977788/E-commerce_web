@@ -1,14 +1,10 @@
 import axios from 'axios';
 
 const productionApiUrl = 'https://wistoria-qq9f.onrender.com/api';
-const staleProductionApiUrls = [
-  'https://wistoria-api.onrender.com/api',
-  'https://taskflow-pro-api-ozw7.onrender.com/api',
-];
 const configuredApiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL;
 
 const apiBaseUrl = (
-  import.meta.env.PROD && (!configuredApiUrl || staleProductionApiUrls.includes(configuredApiUrl))
+  import.meta.env.PROD
     ? productionApiUrl
     : configuredApiUrl || (import.meta.env.PROD ? productionApiUrl : 'http://localhost:5000/api')
 ).replace(/\/$/, '');
