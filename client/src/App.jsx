@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import { fetchProfile } from './store/slices/authSlice';
+import { fetchProfile, logout } from './store/slices/authSlice';
 import { fetchCart } from './store/slices/cartSlice';
 import CartSidebar from './components/cart/CartSidebar';
 
@@ -53,6 +53,15 @@ function App() {
       dispatch(fetchCart());
     }
   }, [isAuthenticated, dispatch]);
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      dispatch(logout());
+    };
+
+    window.addEventListener('wistoria:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('wistoria:unauthorized', handleUnauthorized);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

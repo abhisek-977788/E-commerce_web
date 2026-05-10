@@ -1,6 +1,4 @@
 import axios from 'axios';
-import store from '../store/store';
-import { logout } from '../store/slices/authSlice';
 
 const productionApiUrl = 'https://wistoria-qq9f.onrender.com/api';
 const legacyProductionApiUrl = 'https://wistoria-api.onrender.com/api';
@@ -31,7 +29,8 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      store.dispatch(logout());
+      localStorage.removeItem('token');
+      window.dispatchEvent(new Event('wistoria:unauthorized'));
     }
     return Promise.reject(error);
   }
