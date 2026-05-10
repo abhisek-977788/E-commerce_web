@@ -5,8 +5,8 @@ Wistoria is a full-stack e-commerce platform with a Vite React frontend and an E
 ## Production URLs
 
 - Frontend: `https://wistoria-abhisek-patels-projects.vercel.app`
-- Backend API: `https://wistoria-api.onrender.com`
-- API health check: `https://wistoria-api.onrender.com/api/health`
+- Backend API: `https://wistoria-qq9f.onrender.com`
+- API health check: `https://wistoria-qq9f.onrender.com/api/health`
 
 ## Repository Structure
 
@@ -31,8 +31,8 @@ Wistoria is a full-stack e-commerce platform with a Vite React frontend and an E
    - Build command: `npm run build`
    - Output directory: `dist`
 6. Add production environment variables:
-   - `VITE_API_URL=https://wistoria-api.onrender.com/api`
-   - `VITE_API_BASE_URL=https://wistoria-api.onrender.com/api`
+   - `VITE_API_URL=https://wistoria-qq9f.onrender.com/api`
+   - `VITE_API_BASE_URL=https://wistoria-qq9f.onrender.com/api`
    - `VITE_RAZORPAY_KEY_ID=<your Razorpay key id>`
 7. Enable GitHub auto-deploys for the `main` branch.
 8. Assign an available production domain.

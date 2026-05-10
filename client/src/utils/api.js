@@ -2,10 +2,14 @@ import axios from 'axios';
 import store from '../store/store';
 import { logout } from '../store/slices/authSlice';
 
+const productionApiUrl = 'https://wistoria-qq9f.onrender.com/api';
+const legacyProductionApiUrl = 'https://wistoria-api.onrender.com/api';
+const configuredApiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL;
+
 const apiBaseUrl = (
-  import.meta.env.VITE_API_URL ||
-  import.meta.env.VITE_API_BASE_URL ||
-  (import.meta.env.PROD ? 'https://wistoria-api.onrender.com/api' : 'http://localhost:5000/api')
+  import.meta.env.PROD && (!configuredApiUrl || configuredApiUrl === legacyProductionApiUrl)
+    ? productionApiUrl
+    : configuredApiUrl || (import.meta.env.PROD ? productionApiUrl : 'http://localhost:5000/api')
 ).replace(/\/$/, '');
 
 const api = axios.create({
