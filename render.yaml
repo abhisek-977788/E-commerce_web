@@ -12,9 +12,9 @@ services:
       - key: NODE_ENV
         value: production
       - key: CLIENT_URL
-        value: https://wistoria.vercel.app
+        value: https://wistoria-abhisek-patels-projects.vercel.app
       - key: FRONTEND_URL
-        value: https://wistoria.vercel.app
+        value: https://wistoria-abhisek-patels-projects.vercel.app
       - key: JWT_EXPIRES_IN
         value: 7d
       - key: MONGODB_URI

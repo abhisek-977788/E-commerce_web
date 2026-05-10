@@ -4,7 +4,7 @@ Wistoria is a full-stack e-commerce platform with a Vite React frontend and an E
 
 ## Production URLs
 
-- Frontend: `https://wistoria.vercel.app`
+- Frontend: `https://wistoria-abhisek-patels-projects.vercel.app`
 - Backend API: `https://wistoria-api.onrender.com`
 - API health check: `https://wistoria-api.onrender.com/api/health`
 
@@ -51,8 +51,8 @@ The SPA fallback is configured in `client/vercel.json` so direct route visits wo
    - Health check path: `/api/health`
 4. Add production environment variables:
    - `NODE_ENV=production`
-   - `CLIENT_URL=https://wistoria.vercel.app`
-   - `FRONTEND_URL=https://wistoria.vercel.app`
+   - `CLIENT_URL=https://wistoria-abhisek-patels-projects.vercel.app`
+   - `FRONTEND_URL=https://wistoria-abhisek-patels-projects.vercel.app`
    - `MONGODB_URI=<MongoDB Atlas connection string>`
    - `DATABASE_URL=<same MongoDB Atlas connection string, optional fallback>`
    - `JWT_SECRET=<strong random secret>`

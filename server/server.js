@@ -6,7 +6,7 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
-const defaultClientUrl = 'https://wistoria.vercel.app';
+const defaultClientUrl = 'https://wistoria-abhisek-patels-projects.vercel.app';
 const allowedOrigins = [
   process.env.CLIENT_URL,
   process.env.FRONTEND_URL,
